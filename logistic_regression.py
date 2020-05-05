@@ -6,18 +6,18 @@ from sklearn import linear_model, preprocessing, model_selection
 train = pd.read_csv("./data/train.csv")
 test = pd.read_csv("./data/test.csv")
 
-print "\nCleaning up some data"
+print("\nCleaning up some data")
 
 utils.clean_data(train)
 utils.clean_data(test)
 
-print "\nExtracting target and features"
+print("\nExtracting target and features")
 
 print(train.shape)
 target = train["Survived"].values
 features = train[["Pclass", "Age", "Sex", "Fare", "SibSp", "Parch", "Embarked"]].values
 
-print "\nUse logistic regression"
+print("\nUse logistic regression")
 
 logistic = linear_model.LogisticRegression()
 logistic.fit(features, target)
@@ -30,7 +30,7 @@ print scores.mean()
 test_features = test[["Pclass", "Age", "Sex", "Fare", "SibSp", "Parch", "Embarked"]].values
 utils.write_prediction(logistic.predict(test_features), "results/logistic_regression.csv")
 
-print "\nUse polynomial features"
+print("\nUse polynomial features")
 poly = preprocessing.PolynomialFeatures(degree=2)
 features_ = poly.fit_transform(features)
 

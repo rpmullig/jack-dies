@@ -6,7 +6,7 @@ from sklearn import ensemble, model_selection, grid_search
 train = pd.read_csv("./data/train.csv")
 test = pd.read_csv("./data/test.csv")
 
-print "\nCleaning up some data"
+print("\nCleaning up some data")
 
 utils.clean_data(train)
 utils.clean_data(test)
@@ -17,7 +17,7 @@ print(train.shape)
 target = train["Survived"].values
 features = train[["Pclass", "Age", "Sex", "Fare", "SibSp", "Parch", "Embarked"]].values
 
-print "\nUse gradient boosting classifier"
+print("\nUse gradient boosting classifier")
 
 # grid_search = grid_search.GridSearchCV(
 #     estimator = ensemble.GradientBoostingClassifier(
